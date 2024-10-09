@@ -1,0 +1,11 @@
+# Crear una base de datos nueva.
+04-SQL/ $ sqlite3 favorites.db
+Are you sure you want to create favorites.db? [y/N] y
+
+# Entrar en modo CSV.
+sqlite> .mode csv
+# Importar un archivo CSV a la base de datos.
+sqlite> .import favorites.csv favorites
+
+# Salir del programa.
+sqlite> .quit

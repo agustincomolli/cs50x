@@ -1,0 +1,4 @@
+# Para crear un índice.
+CREATE INDEX nombre On tabla (columna, ...)
+
+CREATE INDEX title_index ON shows (title);

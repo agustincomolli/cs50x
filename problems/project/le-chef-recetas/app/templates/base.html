@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Le Chef Recetas: {% block title %}{% endblock %}</title>
+  <link rel="shortcut icon" href="{{ url_for('static', filename='/icons/favicon.png') }}" type="image/x-icon">
+  <!-- Bootstrap en modo local -->
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap/bootstrap.min.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='styles/bootstrap/bootstrap-icons.min.css') }}">
+  <script src="{{ url_for('static', filename='scripts/bootstrap/bootstrap.bundle.min.js') }}"></script>
+  <!-- Mis estilos -->
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='/styles/styles.css') }}">
+  <!-- Metadatos para compartir la página en redes sociales y servicios de mensajería -->
+  <meta property="og:title" content="Le Chef Recetas">
+  <meta property="og:description" content="Un sitio web donde puedes guardar y compartir tus recetas de cocina favoritas.">
+  <meta property="og:image" content="{{ url_for('static', filename='images/le-chef-social-media.png') }}">
+  <meta property="og:url" content="https://le-chef-recetas.onrender.com">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="{{ url_for('static', filename='images/le-chef-social-media.png') }}">
+</head>
+<body class="d-flex flex-column justify-content-center min-vh-100">
+  <header>
+    <!-- Barra de navegación -->
+    <nav class="navbar navbar-expand-lg bg-body-tertiary pb-0 border-0">
+      <div class="container-fluid">
+        <div class="d-flex align-items-center justify-content-between w-100">
+          <!-- Logo y marca: Siempre a la izquierda -->
+          <!-- El subtítulo se oculta en modo responsivo -->
+          <div class="equal-width d-flex justify-content-start">
+            <a href="/" class="navbar-brand d-flex align-items-center">
+              <img class="rounded-circle" src="{{ url_for('static', filename='images/le-chef.webp') }}" alt="Logo"
+                height="64" width="64">
+              <span class="ms-2 fs-3">Le Chef</span>
+              <span class="mt-5 ms-2 fs-5 align-self-end d-none d-lg-inline fw-light">Recetas de cocina</span>
+            </a>
+          </div>
+
+          <!-- Barra de búsqueda: Siempre en el centro -->
+          <!-- Se oculta en modo responsivo y se muestra debajo del logo -->
+          <form class="d-none d-sm-flex mx-2 mt-2 mt-lg-0 search-bar" role="search"
+            action="{{ url_for('main.search') }}" method="GET">
+            <input name="query" class="form-control me-2" type="search" placeholder="Buscar recetas..."
+              aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">
+              <i class="bi bi-search"></i>
+            </button>
+          </form>
+
+          <!-- Enlaces de autenticación y menú hamburguesa: Siempre a la derecha -->
+          <div class="equal-width d-flex justify-content-end align-items-center">
+            {% if session["user_id"] %}
+            <div class="d-none d-sm-flex me-3 align-items-center">
+              <ul class="navbar-nav ms-auto">
+                <li class="nav-item"><a href="/recipe/new" class="nav-link">Agregar receta</a></li>
+                <li class="nav-item"><a href="/my_recipes" class="nav-link">Mis recetas</a></li>
+              </ul>
+              <ul class="navbar-nav ms-auto mt-2">
+                <!-- Dropdown menu -->
+                <li class="nav-item dropdown" title="User Info">
+                  <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                    aria-expanded="false">
+                    <img class="border border-warning rounded-circle bg-warning bg-opacity-25 p-1"
+                      src="data:image/webp;base64,{{ session['profile_image'] }}" alt="Imagen de perfil" width="48"
+                      height="48" title="{{ session['username'] }}">
+                  </a>
+                  <ul class="dropdown-menu dropdown-menu-end">
+                    <li class="nav-item"><a class="dropdown-item" href="/account">Mi cuenta</a></li>
+                    <li>
+                      <hr class="dropdown-divider">
+                    </li>
+                    <li class="nav-item"><a class="dropdown-item" href="/logout">Cerrar sesión</a></li>
+                  </ul>
+                </li>
+              </ul>
+            </div>
+            {% else %}
+            <div class="d-none d-lg-flex me-3">
+              <a href="/register" class="nav-link me-3">Registrarse</a>
+              <a href="/login" class="nav-link">Iniciar sesión</a>
+            </div>
+            {% endif %}
+            <!-- Menú hamburguesa para modo responsivo -->
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+              aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+              <span class="navbar-toggler-icon"></span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Menú hamburguesa desplegado: Opciones de usuario a la derecha -->
+        <div class="collapse navbar-collapse text-end me-2 mb-3" id="navbar">
+          {% if session["user_id"] %}
+          <ul class="d-flex d-sm-none navbar-nav ms-auto">
+            <li class="nav-item"><a href="/recipe/new" class="nav-link">Agregar receta</a></li>
+            <li class="nav-item"><a href="/my_recipes" class="nav-link">Mis recetas</a></li>
+            <li class="nav-item"><a href="/account" class="nav-link">Mi cuenta</a></li>
+            <li class="nav-item"><a href="/logout" class="nav-link">Cerrar sesión</a></li>
+          </ul>
+          {% else %}
+          <ul class="d-flex d-sm-none navbar-nav ms-auto">
+            <li class="nav-item"><a href="/register" class="nav-link">Registrarse</a></li>
+            <li class="nav-item"><a href="/login" class="nav-link">Iniciar sesión</a></li>
+          </ul>
+          {% endif %}
+        </div>
+      </div>
+    </nav>
+    <nav class="navbar bg-body-tertiary border-0 pt-0" id="categories">
+      <!-- <nav class="navbar navbar-light bg-light pt-0"> -->
+      <div class="container-fluid">
+        <!-- Barra de búsqueda móvil: Se muestra debajo del logo en modo responsivo -->
+        <ul class="d-block d-sm-none nav justify-content-center w-100">
+          <li class="nav-item">
+            <form class="d-flex mx-auto mt-2 mt-lg-0 search-bar">
+              <input name="query" class="form-control me-2" type="search" placeholder="Buscar" aria-label="Search">
+              <button class="btn btn-outline-success" type="submit">
+                <i class="bi bi-search"></i>
+              </button>
+            </form>
+          </li>
+        </ul>
+        <!-- Categorías: Siempre centradas -->
+        <ul class="nav nav-tabs border-bottom-0 justify-content-center w-100 mt-2">
+          <li class="nav-item">
+            <a class="nav-link {% if not current_category %}active{% endif %}"
+              href="{{ url_for('main.index') }}">Últimas</a>
+          </li>
+          {% for category in categories %}
+          <li class="nav-item">
+            <a class="nav-link {% if current_category == category.id %}active{% endif %}"
+              href="{{ url_for('main.index', category_id=category.id) }}">{{ category.name }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+    </nav>
+  </header>
+  <main class="flex-grow-1 container py-4 text-center sm-border shadow">
+    <!-- Sección para mensaje Flash de Python Flask -->
+    {% with messages = get_flashed_messages(with_categories=true) %}
+    {% if messages %}
+    {% for category, message in messages %}
+    <div class="alert alert-{{ category }} mx-5">
+      <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+      {{ message }}
+    </div>
+    {% endfor %}
+    {% endif %}
+    {% endwith %}
+
+    {% block main %}
+    {% endblock %}
+  </main>
+  <footer class="bg-primary text-light pb-2">
+    <div class="container mt-0 pt-2">
+      <div class="row">
+        <!-- Breve descripción o lema -->
+        <div class="col-md-5 mb-0">
+          <h5>Le Chef Recetas</h5>
+          <p>
+            Las mejores recetas para todos los gustos. Encuentra tus platos favoritos y descubre nuevas delicias.
+          </p>
+        </div>
+        <!-- Enlaces a secciones principales -->
+        <div class="col-md-4 mb-0">
+          <h5>Enlaces</h5>
+          <ul class="list-unstyled">
+            <li><a href="/" class="text-light">Inicio</a></li>
+            <li><a href="{{ url_for('main.about') }}" class="text-light">Sobre Nosotros</a></li>
+            <li><a href="/contact" class="text-light">Contacto</a></li>
+          </ul>
+        </div>
+        <!-- Íconos de redes sociales -->
+        <div class="col-md-3 mb-0">
+          <h5>Síguenos</h5>
+          <a href="#" class="text-light me-2" data-bs-toggle="modal" data-bs-target="#modalRedesSociales"><i
+              class="bi bi-facebook"></i></a>
+          <a href="#" class="text-light me-2" data-bs-toggle="modal" data-bs-target="#modalRedesSociales"><i
+              class="bi bi-twitter"></i></a>
+          <a href="#" class="text-light me-2" data-bs-toggle="modal" data-bs-target="#modalRedesSociales"><i
+              class="bi bi-instagram"></i></a>
+          <a href="#" class="text-light me-2" data-bs-toggle="modal" data-bs-target="#modalRedesSociales"><i
+              class="bi bi-youtube"></i></a>
+        </div>
+        <!-- Créditos y derechos de autor -->
+        <div class="text-center pt-2 pt-sm-0">
+          <span><small>2024 - Agustín Comolli &copy; Todos los derechos reservados.</small></span>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal de redes sociales -->
+  <div class="modal fade" id="modalRedesSociales" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header bg-dark text-light rounded-0">
+          <h5 class="modal-title">Redes Sociales</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body d-flex flex-column align-items-center">
+          <img src="{{ url_for('static', filename='images/ha-ha.webp') }}" width="300px" alt="Imagen de ah-ah"
+            class="mb-2" id="nelson">
+          <p class="fs-5 mb-0">¡Todavía no está implementada esta función!</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-bs-dismiss="modal">Cerrar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  const tooltipTriggerList = document.querySelectorAll('[data-bs-toggle="tooltip"]')
+  const tooltipList = [...tooltipTriggerList].map(tooltipTriggerEl => new bootstrap.Tooltip(tooltipTriggerEl))
+  // Almacena el título original de la página
+  let previousTitle = document.title;
+
+  // Agrega un evento para cuando la ventana pierde el enfoque (cuando el usuario cambia de pestaña o minimiza)
+  window.addEventListener("blur", () => {
+    // Guarda el título actual de la página
+    previousTitle = document.title;
+    // Cambia el título de la página a un mensaje llamativo
+    document.title = "¡No te vayas! ¡Vuelve! 😱";
+  });
+
+  // Agrega un evento para cuando la ventana gana el enfoque (cuando el usuario vuelve a la pestaña)
+  window.addEventListener("focus", () => {
+    // Restaura el título de la página al título original
+    document.title = previousTitle;
+  });
+</script>
+</html>

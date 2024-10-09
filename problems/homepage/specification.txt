@@ -1,0 +1,35 @@
+HTML tags:
+    <html>
+    <head>
+    <link>
+    <script>
+    <title>
+    <body>
+    <header>
+    <nav>
+    <div>
+    <a>
+    <img>
+    <button>
+    <span>
+    etc...
+
+CSS propiedades:
+    text-decoration
+    border-radius
+    width
+    height
+    margin-bottom
+    padding
+    background-color
+    color
+    text-align
+    etc...
+
+Boostrap:
+Todas las páginas tienen Boostrap como estilo principal y tienen el componente un "NavBar" para
+navegar por el sitio, un componente "Accordion" en la página principal. También en la página de contactos
+utilizo un componente "Card"
+
+JavaScript:
+Utilizo JS para cargar la etiqueta <select> con las provincias de mi país.

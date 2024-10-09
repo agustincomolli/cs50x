@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block body %}
+    <div class="container">
+        <h1 class="text-center">Programas de TV</h1>
+        <h2>Programas encontrados:</h2>
+        <ul class="fs-5">
+            {% for show in shows %}
+                <li>{{ show["title"] }} - {{ show["year"] }}</li>
+            {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

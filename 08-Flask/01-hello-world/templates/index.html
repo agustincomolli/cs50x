@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+<!-- Extiende el layout base definido en layout.html -->
+
+{% block title %} ¡Bienvenido a Flask! {% endblock %}
+<!-- Sobrescribe el bloque 'title' definido en el layout base -->
+
+{% block body %}
+    <!-- Sobrescribe el bloque 'body' definido en el layout base -->
+    <h1>¡Bienvenido a Flask!</h1>
+    <!-- Formulario que envía una solicitud GET a la ruta '/greet' definida en Flask -->
+    <form method="get" action="/greet">
+        <label for="name">Nombre:</label>
+        <!-- Campo de texto para ingresar el nombre -->
+        <input type="text" name="name" title="Escribe tu nombre">
+        <!-- Botón para enviar el formulario -->
+        <button type="submit">¡Saludar!</button>
+    </form>
+{% endblock %}

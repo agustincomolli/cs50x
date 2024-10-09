@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+
+{% block title %}Registro exitoso{% endblock %}
+
+{% block body %}
+    <h2>Inscriptos</h2>
+   <p>
+        <img src="https://img.icons8.com/?size=100&id=d14v88E75Jhu&format=png&color=000000">
+   </p>
+   <table>
+        <tr>
+            <th>Nombre</th>
+            <th>Deporte</th>
+        </tr>
+        {% for user in users%}
+            <tr>
+                <td>{{ user.name }}</td>
+                <td>{{ user.sport }}</td>
+                <td>
+                    <form action="/deregister" method="post">
+                        <input name="id" type="hidden" value="{{ user.id }}">
+                        <button type="submit">❌</button>
+                    </form>
+                </td>
+            </tr>
+        {% endfor %}
+   </table>
+{% endblock %}

@@ -1,0 +1,71 @@
+<!--
+    This program implemented the functions of updating and deleting birthdays.
+    To update birthdays I have created a separate file called update.html.
+    Since I can't upload via submit50; I leave the code of said file in comments
+    below the index.html file.
+-->
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="/static/styles.css" rel="stylesheet">
+        <title>Birthdays</title>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Birthdays</h1>
+        </div>
+        <div class="container">
+            <div class="section">
+
+                <h2>Add a Birthday</h2>
+                <!-- TODO: Create a form for users to submit a name, a month, and a day -->
+                <form action="/" method="post">
+                    <input type="text" name="name" id="name" placeholder="Name" autocomplete="off" autofocus required>
+                    <input type="number" name="month" id="month" min="1" max="12" placeholder="Month"
+                        autocomplete="false" required>
+                    <input type="number" name="day" id="day" min="1" max="31" placeholder="Day" autocomplete="false"
+                        required>
+                    <button type="submit">Add Birthday</button>
+                </form>
+            </div>
+
+            <div class="section">
+
+                <h2>All Birthdays</h2>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Birthday</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- TODO: Loop through the database entries to display them in this table -->
+                        {% for birthday in birthdays %}
+                        <tr>
+
+                            <td>{{ birthday["name"] }}</td>
+                            <td>{{ birthday["day"] }}/{{ birthday["month"] }}</td>
+                            <!-- Agrega funcionalidad de actualizar o eliminar cumpleaños -->
+                            <td>
+                                <form>
+                                    <button type="submit" formaction="/update" formmethod="get" class="action" name="id"
+                                        value="{{ birthday['id'] }}" title="Update birthday">✏️</button>
+                                    <button type="submit" formaction="/delete" formmethod="post" class="action"
+                                        name="id" value="{{ birthday['id'] }}" title="Delete birthday">❌</button>
+                                </form>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </body>
+
+</html>

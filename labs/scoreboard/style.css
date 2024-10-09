@@ -1,0 +1,36 @@
+table {
+    border: 2px solid black;
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+td {
+    border: 2px solid black;
+}
+
+p,
+h1 {
+    text-align: center;
+}
+
+.team {
+    background-color: crimson;
+}
+
+#score1,
+#add1 {
+    color: #dc143c;
+}
+
+#score2,
+#add2 {
+    color: #0f4d92
+}
+
+#result {
+    color: red;
+    font-weight: bold;
+    font-size: 1.5em;
+}

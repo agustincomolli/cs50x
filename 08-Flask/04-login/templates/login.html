@@ -1,0 +1,18 @@
+{% extends "layout.html" %}
+
+{% block title %}Iniciar sesión 🔐{% endblock %}
+
+{% block body %}
+    <section class="login">
+        <header>
+            <h2>Iniciar sesión 🔐</h2>
+        </header>
+        <main>
+            <form action="/login" method="post" class="login-form">
+                <label for="user-name">Usuario:</label>
+                <input type="text" id="user-name" name="user-name" autocomplete="off" autofocus>
+                <button type="submit">Iniciar sesión</button>
+            </form>
+        </main>
+    </section>
+{% endblock %}

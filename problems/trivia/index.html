@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+        <script>
+            // TODO: Add code to check answers to questions
+            let btn_china;
+            let btn_russia;
+            let btn_usa;
+            let btn_canada;
+            let message_1;
+            let message_2;
+            let answer;
+            let btn_check_answer;
+
+            document.addEventListener("DOMContentLoaded", Initialize);
+
+            function Initialize() {
+                btn_china = document.querySelector("#btn-china");
+                btn_russia = document.querySelector("#btn-russia");
+                btn_usa = document.querySelector("#btn-usa");
+                btn_canada = document.querySelector("#btn-canada");
+                message_1 = document.querySelector("#message-1");
+                message_2 = document.querySelector("#message-2");
+                answer = document.querySelector("#answer");
+                btn_check_answer = document.querySelector("#btn-check-answer");
+
+                btn_china.addEventListener("click", function() {
+                    handleClick("china");
+                });
+                btn_russia.addEventListener("click", function() {
+                    handleClick("russia");
+                });
+                btn_usa.addEventListener("click", function() {
+                    handleClick("usa");
+                });
+                btn_canada.addEventListener("click", function() {
+                    handleClick("canada");
+                });
+                btn_check_answer.addEventListener("click", checkAnswer);
+            };
+
+            function handleClick(button) {
+                // Hacer visible el párrafo de mensaje al usuario.
+                message_1.hidden = false;
+
+                switch (button) {
+                    case "china":
+                        message_1.innerHTML = "<strong>Incorrecto:</strong> El área de China es de aproximadamente 9.596.961 km²";
+                        btn_china.classList.add("incorrect-background");
+                        break;
+                    case "russia":
+                        message_1.innerHTML = "<strong>¡Correcto! 🥳:</strong> El área de Rusia es de aproximadamente 17.098.242 km²";
+                        btn_russia.classList.add("correct-background");
+                        break;
+                    case "usa":
+                        message_1.innerHTML = "<strong>Incorrecto:</strong> El área de Estados Unidos es de aproximadamente 9.525.067 km²";
+                        btn_usa.classList.add("incorrect-background");
+                        break;
+                    case "canada":
+                        message_1.innerHTML = "<strong>Incorrecto:</strong> El área de Canadá es de aproximadamente 9.984.670 km²";
+                        btn_canada.classList.add("incorrect-background");
+                        break;
+                };
+            };
+
+            function checkAnswer() {
+                const CORRECT_ANSWER = "1492";
+
+                // Hacer visible el párrafo de mensaje al usuario.
+                message_2.hidden = false;
+
+                // Remover clases anteriores de fondo
+                answer.classList.remove("correct-background", "incorrect-background");
+
+                if (answer.value == CORRECT_ANSWER) {
+                    answer.classList.add("correct-background");
+                    message_2.innerHTML = "<strong>¡Correcto!</strong>";
+                } else {
+                    answer.classList.add("incorrect-background");
+                    message_2.innerHTML = "<strong>Incorrecto</strong>";
+                };
+            };
+        </script>
+    </head>
+
+    <body>
+        <div class="header">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <!-- TODO: Add multiple choice question here -->
+                <h3>¿Cuál es el país más grande del mundo por área?</h3>
+                <button id="btn-china">China</button>
+                <button id="btn-russia">Rusia</button>
+                <button id="btn-usa">Estados unidos</button>
+                <button id="btn-canada">Canadá</button>
+                <p id="message-1" hidden></p>
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <!-- TODO: Add free response question here -->
+                <h3>¿En qué año llegó Cristóbal Colón a América?</h3>
+                <input type="text" id="answer">
+                <button id="btn-check-answer">Comprobar respuesta</button>
+                <p id="message-2" hidden></p>
+            </div>
+        </div>
+    </body>
+
+</html>

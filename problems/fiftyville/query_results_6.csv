@@ -1,0 +1,42 @@
++-----------+------------+---------------+------+--------+
+|   name    |   origin   |  destination  | hour | minute |
++-----------+------------+---------------+------+--------+
+| Gloria    | Fiftyville | Boston        | 16   | 0      |
+| Kristina  | Fiftyville | Boston        | 16   | 0      |
+| Douglas   | Fiftyville | Boston        | 16   | 0      |
+| Diana     | Fiftyville | Boston        | 16   | 0      |
+| Christian | Fiftyville | Boston        | 16   | 0      |
+| Michael   | Fiftyville | Boston        | 16   | 0      |
+| Ethan     | Fiftyville | Boston        | 16   | 0      |
+| Charles   | Fiftyville | Boston        | 16   | 0      |
+| Dennis    | Fiftyville | San Francisco | 12   | 15     |
+| Jose      | Fiftyville | San Francisco | 12   | 15     |
+| Jennifer  | Fiftyville | San Francisco | 12   | 15     |
+| Brandon   | Fiftyville | San Francisco | 12   | 15     |
+| Matthew   | Fiftyville | San Francisco | 12   | 15     |
+| Emily     | Fiftyville | San Francisco | 12   | 15     |
+| Douglas   | Fiftyville | San Francisco | 12   | 15     |
+| Jordan    | Fiftyville | San Francisco | 12   | 15     |
+| Doris     | Fiftyville | New York City | 8    | 20     |
+| Sofia     | Fiftyville | New York City | 8    | 20     |
+| Bruce     | Fiftyville | New York City | 8    | 20     |
+| Edward    | Fiftyville | New York City | 8    | 20     |
+| Kelsey    | Fiftyville | New York City | 8    | 20     |
+| Taylor    | Fiftyville | New York City | 8    | 20     |
+| Kenny     | Fiftyville | New York City | 8    | 20     |
+| Luca      | Fiftyville | New York City | 8    | 20     |
+| Daniel    | Fiftyville | Chicago       | 9    | 30     |
+| Carol     | Fiftyville | Chicago       | 9    | 30     |
+| Rebecca   | Fiftyville | Chicago       | 9    | 30     |
+| Sophia    | Fiftyville | Chicago       | 9    | 30     |
+| Heather   | Fiftyville | Chicago       | 9    | 30     |
+| Marilyn   | Fiftyville | Chicago       | 9    | 30     |
+| Richard   | Fiftyville | Tokyo         | 15   | 20     |
+| Thomas    | Fiftyville | Tokyo         | 15   | 20     |
+| Brooke    | Fiftyville | Tokyo         | 15   | 20     |
+| Larry     | Fiftyville | Tokyo         | 15   | 20     |
+| Steven    | Fiftyville | Tokyo         | 15   | 20     |
+| John      | Fiftyville | Tokyo         | 15   | 20     |
+| Pamela    | Fiftyville | Tokyo         | 15   | 20     |
+| Melissa   | Fiftyville | Tokyo         | 15   | 20     |
++-----------+------------+---------------+------+--------+

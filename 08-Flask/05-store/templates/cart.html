@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+
+{% block title %}Carrito de Compras 🛒{% endblock %}
+
+{% block body %}
+  <h2>Carrito de Compras 🛒</h2>
+  <ol>
+    {% for book in books %}
+      <li>{{ book["title"] }}</li>
+    {% endfor %}
+  </ol>
+{% endblock %}

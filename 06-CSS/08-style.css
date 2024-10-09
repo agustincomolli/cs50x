@@ -1,0 +1,21 @@
+body {
+    font-family: "Tahoma";
+}
+
+table {
+    border: 5px solid navy;
+}
+
+tr {
+    height: 50px;
+}
+
+td {
+    /* Formato de celdas */
+    background-color: black;
+    color: white;
+    font-size: 22pt;
+    font-family: Georgia;
+    text-align: center;
+    width: 50px;
+}

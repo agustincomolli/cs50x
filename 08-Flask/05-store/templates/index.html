@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+
+{% block title %}Tienda de Libros 📖{% endblock %}
+
+{% block body %}
+    <h2>Lista de libros</h2>
+    {% for book in books %}
+        <div class="d-flex align-items-center">
+            <h5 class="me-3 col-md-4">{{ book["title"] }}</h5>
+            <form action="/cart" method="post">
+                <input type="hidden" name="id" value="{{ book['id'] }}">
+                <button class="btn btn-primary btn-sm mb-2" type="submit">Agregar al carrito</button>
+            </form>
+        </div>
+    {% endfor %}
+{% endblock %}

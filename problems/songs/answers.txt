@@ -1,0 +1,5 @@
+Para caracterizar el aura de audio del oyente, podrías analizar los atributos de las canciones en la base de datos, como la energía, la bailabilidad, la acústica, etc. Podrías calcular la media de estos atributos para tener una idea general del tipo de música que le gusta al oyente.
+
+Sin embargo, esta forma de calcular el aura podría no ser muy representativa porque se basa en las 100 mejores canciones de un solo año. El gusto musical de una persona puede variar mucho y no se puede representar completamente con solo 100 canciones. Además, las canciones más populares no siempre reflejan las preferencias personales del oyente.
+
+Una mejor forma de calcular el aura podría ser analizar un conjunto de datos más grande y diverso, que incluya canciones de diferentes años y géneros. También podrías considerar otros atributos, como el estado de ánimo de las canciones, para tener una imagen más completa del aura del oyente.

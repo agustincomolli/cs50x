@@ -1,0 +1,27 @@
+{% extends "layout.html" %}
+
+{% block body %}
+<!-- Contenedor principal que centra el contenido y proporciona márgenes -->
+<div class="container">
+    <!-- Título centrado con margen superior -->
+    <h1 class="text-center mt-3">Programas de TV</h1>
+
+    <!-- Formulario de búsqueda centrado y con ancho medio -->
+    <form class="col-md-6 mx-auto mt-5" role="search" action="/search" method="get">
+        <!-- Grupo de entrada para combinar el campo de búsqueda y el botón -->
+        <div class="input-group">
+            <!-- Campo de entrada de búsqueda -->
+            <input class="form-control" type="search" placeholder="Buscar" aria-label="Buscar" autocomplete="off"
+                autofocus name="q">
+
+            <!-- Botón de búsqueda con icono -->
+            <button class="btn btn-outline-secondary" type="submit" title="Buscar">
+                <!-- Icono de lupa de Bootstrap Icons -->
+                <i class="bi bi-search"></i>
+            </button>
+        </div>
+    </form>
+    <ul class="fs-5">
+    </ul>
+</div>
+{% endblock %}

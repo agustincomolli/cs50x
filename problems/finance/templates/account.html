@@ -1,0 +1,29 @@
+{% extends "layout.html" %}
+
+{% block title %}
+User Account
+{% endblock %}
+
+{% block main %}
+<h4 class="mb-3">Hi, {{ user["username"] }}! You have {{ user["cash"] | usd }}</h4>
+<form action="/account" method="post" class="form-account mx-auto">
+    <div class="mb-3">
+        <label for="additional-cash" class="form-label w-100 text-start">Add cash to your account:</label>
+        <input class="form-control mx-auto w-auto" id="additional-cash" name="additional-cash"
+            placeholder="Additional cash" type="number" min="0" value="0">
+    </div>
+    <div class="mb-3">
+        <label class="form-label w-100 text-start" for="password">Or change your password:</label>
+        <input class="form-control mx-auto w-100" id="password" name="password" placeholder="Password" type="password">
+    </div>
+    <div class="mb-3">
+        <input class="form-control mx-auto w-100" id="confirmation" name="confirmation"
+            placeholder="Repeat password" type="password">
+    </div>
+    <button class="btn btn-primary" type="submit">Save Changes</button>
+</form>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='scripts/validate_account.js') }}"></script>
+{% endblock %}

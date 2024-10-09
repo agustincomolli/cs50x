@@ -1,0 +1,35 @@
+# LENGUAJE DE CONSULTAS
+# **********************
+
+# Mostrar todos los datos de la tabla favorites.
+SELECT * FROM favorites;
+
+# Mostrar solamente la columna language de la tabla favorites.
+SELECT language FROM favorites;
+
+# Mostrar los distintos lenguajes que aparecen en la columna language.
+SELECT DISTINCT language FROM favorites;
+
+# Mostrar qué cantidad de registros tiene la tabla favoritos.
+SELECT COUNT(*) AS Total FROM favorites;
+
+# Mostrar cuántos lenguajes hay en la columna language.
+SELECT COUNT(DISTINCT language) AS 'Cantidad de lenguajes'  FROM favorites;
+
+# Mostrar la cantidad de filas que tiene como lenguaje 'C'.
+SELECT COUNT(*) AS Total FROM favorites WHERE language = 'C';
+
+# Mostrar la cantidad de registros que tiene el problema 'Hello, World' en el lenguaje 'C'.
+SELECT COUNT(*) AS Total FROM favorites WHERE language = 'C' AND problem = 'Hello, World';
+
+# Mostrar qué cantidad de registros tiene cada uno de los lenguajes de la tabla favorites.
+SELECT language, COUNT(*) AS Total FROM favorites GROUP BY language;
+
+# Mostrar qué cantidad de registros tiene cada uno de los lenguajes ordenados por Total.
+SELECT language, COUNT(*) AS Total FROM favorites GROUP BY language ORDER BY Total;
+
+# Mostrar qué cantidad de registros tiene cada uno de los lenguajes ordenados por Total en orden descendente.
+SELECT language, COUNT(*) AS Total FROM favorites GROUP BY language ORDER BY Total DESC;
+
+# Mostrar el lenguage que tiene más registros.
+SELECT language, COUNT(*) AS Total FROM favorites GROUP BY language ORDER BY Total DESC LIMIT 1;

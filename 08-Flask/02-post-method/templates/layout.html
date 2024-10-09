@@ -1,0 +1,13 @@
+<!DOCTYPE html>
+<html>
+    <head lang="es">
+        <!-- Meta etiqueta para asegurar la correcta visualización en dispositivos móviles -->
+        <meta name="viewport" content="initial-scale=1, width=device-width">
+        <!-- Título del documento, se puede sobreescribir en plantillas que extiendan este layout -->
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body>
+        <!-- Bloque de contenido principal que será sobreescrito por las plantillas hijas -->
+        {% block body %}{% endblock %}
+    </body>
+</html>

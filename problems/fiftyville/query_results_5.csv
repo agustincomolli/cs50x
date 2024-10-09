@@ -1,0 +1,13 @@
++---------+------------+----------+
+| caller  |  receiver  | duration |
++---------+------------+----------+
+| Sofia   | Jack       | 51       |
+| Kelsey  | Larry      | 36       |
+| Bruce   | Robin      | 45       |
+| Kelsey  | Melissa    | 50       |
+| Taylor  | James      | 43       |
+| Diana   | Philip     | 49       |
+| Carina  | Jacqueline | 38       |
+| Kenny   | Doris      | 55       |
+| Benista | Anna       | 54       |
++---------+------------+----------+

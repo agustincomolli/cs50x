@@ -1,0 +1,15 @@
+# Para seleccionar registros de dos tablas relacionadas a través de un campo id en una relación uno a uno.
+SELECT title, rating FROM shows JOIN ratings ON shows.id = ratings.show_id
+WHERE rating >= 6.0
+LIMIT 10;
+
+# Para seleccionar registros de dos tablas relacionadas a través de un campo id en una relación uno a muchos.
+SELECT title, genre FROM shows join genres ON shows.id = genres.show_id
+LIMIT 10;
+
+# Para mostrar todos los programas de tv en los que participó Steve Carell.
+SELECT shows.title FROM shows
+   JOIN stars ON shows.id = stars.show_id
+   JOIN people ON stars.person_id = people.id
+   WHERE people.name = 'Steve Carell';
+

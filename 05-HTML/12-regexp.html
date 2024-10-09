@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+
+<!-- Demonstrates pattern attribute -->
+
+<html lang="en">
+  <head>
+    <title>register</title>
+  </head>
+  <body>
+    <form>
+      <!-- Observe que al patternatributo se le entrega una expresión regular para indicar que la dirección de correo electrónico debe incluir un @símbolo y un archivo .edu. -->
+      <input autocomplete="off" autofocus name="email" pattern=".+@.+\.edu" placeholder="Email" type="email">
+      <button>Register</button>
+    </form>
+  </body>
+</html>

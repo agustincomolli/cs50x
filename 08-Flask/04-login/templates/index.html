@@ -1,0 +1,13 @@
+{% extends "layout.html" %}
+
+{% block title %}Iniciar Sesión{% endblock %}
+
+{% block body %}
+    <h1>Iniciar sesión 🔐</h1>
+
+    {% if name %}
+        <p>Has iniciado sesión como: {{ name }}. <a href="/logout">Cerrar sesión</a></p>
+    {% else %}
+        <p>No has iniciado sesión. <a href="/login">Iniciar sesión</a></p>
+    {% endif %}
+{% endblock %}

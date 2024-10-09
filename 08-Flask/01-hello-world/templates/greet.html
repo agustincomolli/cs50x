@@ -1,0 +1,11 @@
+{% extends "layout.html" %}
+<!-- Extiende el layout base definido en layout.html -->
+
+{% block title %} ¡Hola, {{ name }}! {% endblock %}
+<!-- Sobrescribe el bloque 'title' definido en el layout base. Inserta el valor de 'name' proporcionado por Flask -->
+
+{% block body %}
+    <!-- Sobrescribe el bloque 'body' definido en el layout base -->
+    <h1>¡Hola, {{ name }}!</h1>
+    <!-- Muestra un saludo utilizando el valor de 'name' proporcionado por Flask -->
+{% endblock %}

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+    <head>
+        <title>Scoreboard</title>
+        <link href="./style.css" rel="stylesheet">
+    </head>
+
+    <body>
+        <header>
+            <h1>Equipo 1 vs Equipo 2</h1>
+            <p>¡Hola! Haz clic en los botones para cambiar la puntuación.</p>
+        </header>
+        <main>
+            <table>
+                <tr>
+                    <td class="team">Equipo 1</td>
+                    <td class="team">Equipo 2</td>
+                </tr>
+                <tr>
+                    <td id="score1">0</td>
+                    <td id="score2">0</td>
+                </tr>
+                <tr>
+                    <td>
+                        <button id="add1">+1</button>
+                    </td>
+                    <td>
+                        <button id="add2">+1</button>
+                    </td>
+                </tr>
+            </table>
+            <p id="result"> </p>
+        </main>
+        <footer>
+            <p>&copy Hecho por Agustín Comolli para CS50.</p>
+        </footer>
+
+        <script src="./script.js"></script>
+    </body>
+
+</html>
